@@ -1,0 +1,115 @@
+
+import React, { useState } from 'react';
+
+const Navbar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const baseUrl = "https://cq77457.tmweb.ru/ZHIRNOV/assets/img";
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  return (
+    <>
+      <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-xl z-50 transition-all duration-300 border-b border-gray-100/30">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-10 h-20 md:h-24 flex items-center justify-between">
+          {/* Logo */}
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); }} className="flex items-center cursor-pointer">
+            <img src={`${baseUrl}/icons/zhirnov_logo_b.svg`} alt="ZHIRNOV" className="h-6 md:h-8" />
+          </a>
+
+          {/* Desktop Links */}
+          <div className="hidden lg:flex items-center gap-14 text-[15px] font-bold text-gray-500">
+            <a href="#services" className="hover:text-black transition-colors tracking-tight">Услуги</a>
+            <a href="#cases" className="hover:text-black transition-colors tracking-tight">Кейсы</a>
+            <a href="#contacts" className="hover:text-black transition-colors tracking-tight">Контакты</a>
+          </div>
+
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-6">
+            <button className="flex items-center gap-2 bg-[#f5f5f5] hover:bg-gray-200 px-6 py-2.5 rounded-full text-sm font-bold transition-colors">
+              <img src={`${baseUrl}/icons/en.svg`} alt="EN" className="w-4 h-4" />
+              En
+            </button>
+            <a href="#contacts" className="bg-[#108a65] hover:bg-[#0d7354] text-white px-8 py-3.5 rounded-2xl font-bold transition-all shadow-lg shadow-[#108a65]/20 active:scale-95 tracking-tight text-center">
+              Обсудить проект
+            </a>
+            
+            {/* Telegram Button Update */}
+            <a 
+              href="https://t.me/zhirnov_studio" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden xl:inline-flex group transition-transform active:scale-95"
+            >
+              <div className="h-11 pl-3 pr-2.5 py-3.5 bg-zinc-800 rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden hover:bg-black transition-colors">
+                  <div className="w-6 h-6 relative overflow-hidden flex items-center justify-center">
+                      <img src={`${baseUrl}/icons/telegram.svg`} alt="" className="w-5 h-4 invert" />
+                  </div>
+                  <div className="justify-center text-white text-lg font-normal font-['Golos_Text'] leading-6">Наш канал</div>
+                  <div className="px-2 py-0.5 bg-white rounded-[10px] flex justify-center items-center gap-1">
+                      <div className="justify-center text-zinc-800 text-base font-normal font-['Golos_Text'] leading-6">1.5к</div>
+                  </div>
+              </div>
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={toggleMenu}
+            className="md:hidden flex items-center justify-center bg-[#f5f5f5] w-14 h-14 rounded-2xl active:scale-90 transition-all"
+          >
+            <div className="flex flex-col gap-1.5 items-center">
+              <span className="w-6 h-[2.5px] bg-black"></span>
+              <span className="w-6 h-[2.5px] bg-black"></span>
+            </div>
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`fixed inset-0 bg-white z-[60] transition-transform duration-500 flex flex-col ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
+      >
+        <div className="flex items-center justify-between px-6 h-20">
+          <a href="#" onClick={(e) => { e.preventDefault(); toggleMenu(); window.scrollTo({top: 0, behavior: 'smooth'}); }} className="flex items-center">
+             <img src={`${baseUrl}/icons/zhirnov_logo_b.svg`} alt="ZHIRNOV" className="h-6" />
+          </a>
+          <button 
+            onClick={toggleMenu}
+            className="flex items-center justify-center bg-[#f5f5f5] w-14 h-14 rounded-2xl active:scale-90 transition-all"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="flex-1 flex flex-col items-center justify-center gap-10 text-[42px] font-bold tracking-tight">
+          <a href="#services" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">Услуги</a>
+          <a href="#cases" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">Кейсы</a>
+          <a href="#contacts" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">Контакты</a>
+        </div>
+
+        <div className="px-6 pb-12 flex flex-col gap-4">
+          <div className="flex gap-4">
+            <a href="#contacts" onClick={toggleMenu} className="flex-[2.5] bg-[#108a65] text-white py-4.5 rounded-[20px] font-bold text-[18px] active:scale-95 transition-all text-center">
+              Обсудить проект
+            </a>
+            <button className="flex-1 bg-[#f5f5f5] flex items-center justify-center gap-2 rounded-[20px] py-4.5 font-bold text-[18px] active:scale-95 transition-all">
+               <img src={`${baseUrl}/icons/en.svg`} alt="EN" className="w-5 h-5" />
+              En
+            </button>
+          </div>
+          <a href="https://t.me/zhirnov_studio" target="_blank" rel="noopener noreferrer" className="w-full bg-[#2a2a2a] text-white py-5 rounded-[20px] font-bold flex items-center justify-between px-6 active:scale-[0.98] transition-all text-[17px]">
+            <div className="flex items-center gap-3">
+              <img src={`${baseUrl}/icons/telegram.svg`} alt="Telegram" className="w-6 h-6 invert" />
+              <span>Наш канал</span>
+            </div>
+            <span className="bg-white text-black px-3 py-1 rounded-xl text-sm font-black opacity-90">1.5к</span>
+          </a>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Navbar;

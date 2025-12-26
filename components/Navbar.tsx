@@ -10,27 +10,27 @@ const Navbar: React.FC = () => {
   return (
     <>
       <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-xl z-50 transition-all duration-300 border-b border-gray-100/30">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10 h-20 md:h-24 flex items-center justify-between">
+        <div className="max-w-[1920px] mx-auto px-6 md:px-10 h-20 md:h-24 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); }} className="flex items-center cursor-pointer">
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); }} className="w-40 flex items-center cursor-pointer">
             <img src={`${baseUrl}/icons/zhirnov_logo_b.svg`} alt="ZHIRNOV" className="h-6 md:h-8" />
           </a>
 
           {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-14 text-[15px] font-bold text-gray-500">
-            <a href="#services" className="hover:text-black transition-colors tracking-tight">Услуги</a>
-            <a href="#cases" className="hover:text-black transition-colors tracking-tight">Кейсы</a>
-            <a href="#contacts" className="hover:text-black transition-colors tracking-tight">Контакты</a>
+          <div className="hidden lg:flex items-center gap-14 text-[15px] font-bold">
+            <a href="#services" className="justify-center text-color-grey-10 text-lg font-normal leading-6">Услуги</a>
+            <a href="#cases" className="justify-center text-color-grey-10 text-lg font-normal leading-6">Кейсы</a>
+            <a href="#contacts" className="justify-center text-color-grey-10 text-lg font-normal leading-6">Контакты</a>
           </div>
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-6">
-            <button className="flex items-center gap-2 bg-[#f5f5f5] hover:bg-gray-200 px-6 py-2.5 rounded-full text-sm font-bold transition-colors">
-              <img src={`${baseUrl}/icons/en.svg`} alt="EN" className="w-4 h-4" />
-              En
-            </button>
-            <a href="#contacts" className="bg-[#108a65] hover:bg-[#0d7354] text-white px-8 py-3.5 rounded-2xl font-bold transition-all shadow-lg shadow-[#108a65]/20 active:scale-95 tracking-tight text-center">
-              Обсудить проект
+            <a href="#" className="h-11 px-3 py-3.5 bg-zinc-100 rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden">
+                <img src={`${baseUrl}/icons/en.svg`} alt="EN" className="w-5 h-5" />
+                <span className="justify-center text-neutral-800 text-lg font-normal leading-6">En</span>
+            </a>
+            <a href="#contacts" className="h-11 px-4 py-3.5 bg-emerald-600 rounded-2xl inline-flex justify-center items-center overflow-hidden">
+              <div className="justify-center text-white text-lg font-normal leading-6">Обсудить проект</div>
             </a>
             
             {/* Telegram Button Update */}
@@ -42,11 +42,11 @@ const Navbar: React.FC = () => {
             >
               <div className="h-11 pl-3 pr-2.5 py-3.5 bg-zinc-800 rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden hover:bg-black transition-colors">
                   <div className="w-6 h-6 relative overflow-hidden flex items-center justify-center">
-                      <img src={`${baseUrl}/icons/telegram.svg`} alt="" className="w-5 h-4 invert" />
+                      <img src={`${baseUrl}/icons/telegram.svg`} alt="" className="w-5 h-4" />
                   </div>
-                  <div className="justify-center text-white text-lg font-normal font-['Golos_Text'] leading-6">Наш канал</div>
-                  <div className="px-2 py-0.5 bg-white rounded-[10px] flex justify-center items-center gap-1">
-                      <div className="justify-center text-zinc-800 text-base font-normal font-['Golos_Text'] leading-6">1.5к</div>
+                  <a href="https://t.me/zhirnovdesign" target="_blank" className="justify-center text-white text-lg font-normal leading-6">Наш канал</a>
+                    <div className="px-2 py-0.5 bg-white rounded-[10px] flex justify-center items-center gap-1">
+                      <div className="justify-center text-zinc-800 text-base font-normal leading-6">1.5к</div>
                   </div>
               </div>
             </a>
@@ -94,12 +94,12 @@ const Navbar: React.FC = () => {
             <a href="#contacts" onClick={toggleMenu} className="flex-[2.5] bg-[#108a65] text-white py-4.5 rounded-[20px] font-bold text-[18px] active:scale-95 transition-all text-center">
               Обсудить проект
             </a>
-            <button className="flex-1 bg-[#f5f5f5] flex items-center justify-center gap-2 rounded-[20px] py-4.5 font-bold text-[18px] active:scale-95 transition-all">
+            <a href="#" className="flex-1 bg-[#f5f5f5] flex items-center justify-center gap-2 rounded-[20px] py-4.5 font-bold text-[18px] active:scale-95 transition-all">
                <img src={`${baseUrl}/icons/en.svg`} alt="EN" className="w-5 h-5" />
               En
-            </button>
+            </a>
           </div>
-          <a href="https://t.me/zhirnov_studio" target="_blank" rel="noopener noreferrer" className="w-full bg-[#2a2a2a] text-white py-5 rounded-[20px] font-bold flex items-center justify-between px-6 active:scale-[0.98] transition-all text-[17px]">
+          <a href="https://t.me/zhirnovdesign" target="_blank" rel="noopener noreferrer" className="w-full bg-[#2a2a2a] text-white py-5 rounded-[20px] font-bold flex items-center justify-between px-6 active:scale-[0.98] transition-all text-[17px]">
             <div className="flex items-center gap-3">
               <img src={`${baseUrl}/icons/telegram.svg`} alt="Telegram" className="w-6 h-6 invert" />
               <span>Наш канал</span>

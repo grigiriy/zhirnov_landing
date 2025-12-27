@@ -89,7 +89,7 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-20 md:py-32 px-6 md:px-10 max-w-[1920px] mx-auto">
+    <section id="services" className="pb-[144px] px-6 md:px-10 max-w-[1920px] mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-32">
         {services.map((service, index) => (
           <ServiceCard 

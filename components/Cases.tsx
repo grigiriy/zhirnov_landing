@@ -91,9 +91,9 @@ const CaseCard: React.FC<CaseItem> = ({ title, color, badge, image }) => {
           className="absolute inset-0 w-full h-full object-cover" 
         />
 
-        {/* Badge overlay if present */}
+        {/* Badge overlay if present - 20px from bottom and right */}
         {badge && (
-          <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 w-12 h-12 md:w-16 md:h-16 bg-black rounded-2xl md:rounded-[1.25rem] flex items-center justify-center text-white shadow-xl z-10">
+          <div className="absolute bottom-5 right-5 w-12 h-12 md:w-16 md:h-16 bg-black rounded-2xl md:rounded-[1.25rem] flex items-center justify-center text-white shadow-xl z-10">
             {badge === 'telegram' ? (
               <img src={`${baseUrl}/icons/telegram.svg`} alt="Telegram" className="w-6 h-6 md:w-8 md:h-8" />
             ) : (
@@ -120,16 +120,16 @@ const Cases: React.FC = () => {
     : CASE_DATA.filter(c => c.category === activeCategory);
 
   return (
-    <section id="cases" className="py-12 md:py-24 px-6 md:px-10 max-w-[1920px] mx-auto overflow-hidden">
-      {/* Section Heading */}
-      <div className="flex items-center gap-6 md:gap-10 mb-12 md:mb-20">
+    <section id="cases" className="pb-[100px] px-6 md:px-10 max-w-[1920px] mx-auto overflow-hidden">
+      {/* Section Heading - mb-8 (32px) */}
+      <div className="flex items-center gap-6 md:gap-10 mb-8">
         <div className="h-[1px] bg-zinc-100 flex-1"></div>
         <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.05em] text-zinc-800">Кейсы</h2>
         <div className="h-[1px] bg-zinc-100 flex-1"></div>
       </div>
 
-      {/* Filter Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-4 mb-12 md:mb-16">
+      {/* Filter Tabs - mb-[44px] */}
+      <div className="flex flex-wrap items-center justify-center gap-4 mb-[44px]">
         {categories.map((cat) => (
           <button
             key={cat}

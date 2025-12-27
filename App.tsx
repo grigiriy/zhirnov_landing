@@ -26,10 +26,10 @@ const App: React.FC = () => {
       </main>
       
       <footer className="bg-[#1a1a1a] text-white overflow-hidden font-['Golos_Text']">
-        <div className="max-w-[1920px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1920px] mx-auto">
           
           {/* Mobile Footer Version (visible below md) */}
-          <div className="md:hidden flex flex-col pt-8 pb-10">
+          <div className="md:hidden flex flex-col pt-8 pb-10 px-6">
             {/* Mobile Top Row */}
             <div className="flex items-center justify-between mb-6">
               <img src={`${baseUrl}/icons/zhirnov_logo_w.svg`} alt="ZHIRNOV" className="h-6" />
@@ -70,34 +70,39 @@ const App: React.FC = () => {
           </div>
 
           {/* Desktop Footer Version (visible above md) */}
-          <div className="hidden md:block">
-            {/* Desktop Row 1: Logo, Nav, Socials */}
-            <div className="py-6 border-b border-white/10 grid grid-cols-3 items-center">
-              {/* Logo Col (Left) */}
-              <div className="flex justify-start">
+          {/* Container padding: pt-6 (24px) and pb-6 (24px) */}
+          <div className="hidden md:flex flex-col px-14 pt-6 pb-6">
+            
+            {/* Desktop Row 1: Logo, Nav, Socials. Fixed height: 52px. */}
+            <div className="h-[52px] flex justify-between items-center mb-6">
+              {/* Logo (Left) */}
+              <div className="flex-1 flex justify-start">
                 <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>
                   <img src={`${baseUrl}/icons/zhirnov_logo_w.svg`} alt="ZHIRNOV" className="h-8" />
                 </a>
               </div>
 
-              {/* Nav Col (Center) */}
+              {/* Nav (Center) */}
               <div className="flex justify-center gap-12">
                 <a href="#services" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Услуги</a>
                 <a href="#cases" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Кейсы</a>
               </div>
 
-              {/* Socials Col (Right) */}
-              <div className="flex justify-end gap-10">
+              {/* Socials (Right) */}
+              <div className="flex-1 flex justify-end gap-10">
                 <a href="https://t.me/zhirnov_studio" target="_blank" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Телеграм</a>
                 <a href="https://vk.com/zhirnov_studio" target="_blank" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Вконтакте</a>
                 <a href="mailto:hello@zhirnov.studio" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">hello@zhirnov.studio</a>
               </div>
             </div>
 
-            {/* Desktop Row 2: Policy, Copyright, Arrow */}
-            <div className="py-6 grid grid-cols-3 items-center">
+            {/* Separator Line with mb-4 (16px) gap to the next row */}
+            <div className="w-full h-px opacity-20 bg-zinc-300 mb-4" />
+
+            {/* Desktop Row 2: Policy, Copyright, Arrow. Fixed height: 52px. */}
+            <div className="h-[52px] flex justify-between items-center">
               {/* Policy (Left) */}
-              <div className="flex justify-start">
+              <div className="flex-1 flex justify-start">
                 <a href="#" className="text-white text-lg font-normal underline leading-6 hover:opacity-70 transition-opacity">
                   Политика обработки данных
                 </a>
@@ -105,20 +110,22 @@ const App: React.FC = () => {
 
               {/* Copyright (Center) */}
               <div className="flex justify-center">
-                <div className="text-white/50 text-lg font-normal leading-6">
+                <div className="text-white/40 text-lg font-normal leading-6">
                   © 2026, ZHIRNOV STUDIO
                 </div>
               </div>
 
               {/* Scroll Top (Right) */}
-              <div className="flex justify-end">
+              <div className="flex-1 flex justify-end">
                 <button 
                   onClick={scrollToTop}
-                  className="w-16 h-16 rounded-2xl bg-[#2a2a2a] border border-white/5 flex items-center justify-center hover:bg-[#333] transition-all active:scale-95 group"
+                  className="p-3 bg-white/10 rounded-2xl flex justify-center items-center overflow-hidden hover:bg-white/20 transition-all active:scale-95 group"
                 >
-                  <svg className="w-6 h-6 transform group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                  </svg>
+                  <div className="w-6 h-6 relative flex items-center justify-center">
+                    <svg className="w-4 h-5 transform group-hover:-translate-y-1 transition-transform" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6 1V15M6 1L1 6M6 1L11 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
                 </button>
               </div>
             </div>

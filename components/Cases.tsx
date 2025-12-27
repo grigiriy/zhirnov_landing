@@ -73,6 +73,13 @@ const CASE_DATA: CaseItem[] = [
     category: 'Веб-сервисы',
     color: '#cbd5e1',
     image: 'uis.png'
+  },
+  {
+    id: 9,
+    title: "Дизайн софтфона — приложение для звонков",
+    category: 'Веб-сервисы',
+    color: '#cbd5e1',
+    image: 'softphone.png'
   }
 ];
 
@@ -104,7 +111,7 @@ const CaseCard: React.FC<CaseItem> = ({ title, color, badge, image }) => {
       </div>
       
       {/* 8px on mobile (mt-2), 16px on desktop (md:mt-4) */}
-      <div className="mt-2 md:mt-4 self-stretch justify-center text-neutral-800 text-2xl font-normal leading-7 line-clamp-3 tracking-tight">
+      <div className="mt-2 md:mt-4 self-stretch justify-center text-neutral-800 text-lg md:text-2xl font-normal leading-6 md:leading-7 line-clamp-3 tracking-[-0.015em]">
         {title}
       </div>
     </div>
@@ -120,16 +127,15 @@ const Cases: React.FC = () => {
     : CASE_DATA.filter(c => c.category === activeCategory);
 
   return (
-    <section id="cases" className="pb-[100px] px-6 md:px-10 max-w-[1920px] mx-auto overflow-hidden">
-      {/* Section Heading - mb-8 (32px) */}
-      <div className="flex items-center gap-6 md:gap-10 mb-8">
+    <section id="cases" className="pb-14 md:pb-[100px] px-6 md:px-10 max-w-[1920px] mx-auto overflow-hidden">
+      <div className="flex items-center gap-6 md:gap-10 mb-6 md:mb-10">
         <div className="h-[1px] bg-zinc-100 flex-1"></div>
         <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.05em] text-zinc-800">Кейсы</h2>
         <div className="h-[1px] bg-zinc-100 flex-1"></div>
       </div>
 
       {/* Filter Tabs - mb-[44px] */}
-      <div className="flex flex-wrap items-center justify-center gap-4 mb-[44px]">
+      <div className="flex flex-wrap items-center md:justify-center gap-2 mb-4 md:mb-[44px]">
         {categories.map((cat) => (
           <button
             key={cat}

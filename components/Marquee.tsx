@@ -27,7 +27,7 @@ const LogoItem: React.FC<{ name: string; file: string }> = ({ name, file }) => {
 
 const Marquee: React.FC = () => {
   return (
-    <div className="relative w-full overflow-hidden pt-10 md:pt-16 pb-[100px]">
+    <div className="relative w-full overflow-hidden pt-8 md:pb-[100px] pb-[60px]">
       <div className="animate-marquee flex items-center">
         <div className="flex items-center">
           {LOGO_DATA.map((logo, i) => (

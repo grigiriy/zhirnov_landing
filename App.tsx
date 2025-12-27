@@ -25,7 +25,7 @@ const App: React.FC = () => {
         <ContactForm />
       </main>
       
-      <footer className="bg-[#1a1a1a] text-white overflow-hidden font-['Golos_Text']">
+      <footer className="bg-[#1a1a1a] text-white overflow-hidden">
         <div className="max-w-[1920px] mx-auto">
           
           {/* Mobile Footer Version (visible below md) */}
@@ -39,17 +39,17 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className="h-[1px] bg-white/10 w-full mb-8"></div>
+            <div className="h-[1px] bg-white/10 w-full mb-6 md:mb-8"></div>
 
             {/* Mobile Socials Block */}
-            <div className="flex flex-col items-center gap-6 mb-8">
+            <div className="flex flex-col items-center gap-3 md:gap-6 mb-4 md:mb-8">
               <a href="https://t.me/zhirnov_studio" target="_blank" className="text-white text-lg font-normal leading-6">Телеграм</a>
               <a href="https://vk.com/zhirnov_studio" target="_blank" className="text-white text-lg font-normal leading-6">Вконтакте</a>
               <a href="mailto:hello@zhirnov.studio" className="text-white text-lg font-normal leading-6">hello@zhirnov.studio</a>
             </div>
 
             {/* Mobile Arrow Section with horizontal lines */}
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-4 md:mb-8">
               <div className="h-[1px] bg-white/10 flex-1"></div>
               <button 
                 onClick={scrollToTop}
@@ -71,25 +71,25 @@ const App: React.FC = () => {
 
           {/* Desktop Footer Version (visible above md) */}
           {/* Container padding: pt-6 (24px) and pb-6 (24px) */}
-          <div className="hidden md:flex flex-col px-14 pt-6 pb-6">
+          <div className="hidden md:flex flex-col px-12 pt-6 pb-6">
             
             {/* Desktop Row 1: Logo, Nav, Socials. Fixed height: 52px. */}
             <div className="h-[52px] flex justify-between items-center mb-6">
               {/* Logo (Left) */}
               <div className="flex-1 flex justify-start">
                 <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>
-                  <img src={`${baseUrl}/icons/zhirnov_logo_w.svg`} alt="ZHIRNOV" className="h-8" />
+                  <img src={`${baseUrl}/icons/zhirnov_logo_w.svg`} alt="ZHIRNOV" className="h-6" />
                 </a>
               </div>
 
               {/* Nav (Center) */}
-              <div className="flex justify-center gap-12">
+              <div className="flex justify-center gap-6">
                 <a href="#services" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Услуги</a>
                 <a href="#cases" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Кейсы</a>
               </div>
 
               {/* Socials (Right) */}
-              <div className="flex-1 flex justify-end gap-10">
+              <div className="flex-1 flex justify-end gap-6">
                 <a href="https://t.me/zhirnov_studio" target="_blank" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Телеграм</a>
                 <a href="https://vk.com/zhirnov_studio" target="_blank" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Вконтакте</a>
                 <a href="mailto:hello@zhirnov.studio" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">hello@zhirnov.studio</a>

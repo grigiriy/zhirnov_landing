@@ -10,21 +10,21 @@ const Navbar: React.FC = () => {
   return (
     <>
       <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-xl z-50 transition-all duration-300 border-b border-gray-100/30">
-        <div className="max-w-[1920px] mx-auto px-6 md:px-10 h-20 md:h-24 flex items-center justify-between">
+        <div className="max-w-[1920px] mx-auto px-6 md:px-10 h-24 flex items-center justify-between">
           {/* Logo */}
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); }} className="w-40 flex items-center cursor-pointer">
-            <img src={`${baseUrl}/icons/zhirnov_logo_b.svg`} alt="ZHIRNOV" className="h-6 md:h-8" />
+            <img src={`${baseUrl}/icons/zhirnov_logo_b.svg`} alt="ZHIRNOV" className="h-8" />
           </a>
 
           {/* Desktop Links */}
-          <div className="hidden lg:flex items-center gap-14 text-[15px] font-bold">
+          <div className="hidden ml-auto mr-36 lg:flex items-center gap-8 text-[15px] font-bold">
             <a href="#services" className="justify-center text-color-grey-10 text-lg font-normal leading-6">Услуги</a>
             <a href="#cases" className="justify-center text-color-grey-10 text-lg font-normal leading-6">Кейсы</a>
             <a href="#contacts" className="justify-center text-color-grey-10 text-lg font-normal leading-6">Контакты</a>
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-2">
             <a href="#" className="h-11 px-3 py-3.5 bg-zinc-100 rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden">
                 <img src={`${baseUrl}/icons/en.svg`} alt="EN" className="w-5 h-5" />
                 <span className="justify-center text-neutral-800 text-lg font-normal leading-6">En</span>
@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="px-6 pb-12 flex flex-col gap-4">
-          <div className="flex gap-4">
+          <div className="flex gap-2">
             <a href="#contacts" onClick={toggleMenu} className="flex-[2.5] bg-[#108a65] text-white py-4.5 rounded-[20px] font-bold text-[18px] active:scale-95 transition-all text-center">
               Обсудить проект
             </a>

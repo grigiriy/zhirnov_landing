@@ -37,14 +37,18 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, iconColor
         <ServiceIcon src={imageSrc} color={iconColor} blendMode={blendMode} />
       </div>
       
-      {/* Card Content */}
-      <div className="bg-[#f5f5f5] rounded-[40px] md:rounded-[48px] px-8 pb-10 md:pb-14 pt-[110px] md:pt-[160px] flex flex-col items-center text-center h-full transition-all duration-500 hover:shadow-xl hover:shadow-black/[0.03] z-10">
-        <h3 className="text-[28px] md:text-[40px] font-bold mb-4 tracking-[-0.04em] text-[#1a1a1a] leading-[1.1]">
-          {title}
-        </h3>
-        <p className="text-[#1a1a1a]/70 text-base md:text-[18px] font-medium leading-[1.3] max-w-[280px] md:max-w-none tracking-tight">
-          {description}
-        </p>
+      {/* Card Wrapper matching the snippet */}
+      <div className="self-stretch px-8 pt-32 md:pt-40 pb-8 bg-zinc-100 rounded-[32px] inline-flex flex-col justify-start items-start gap-1 overflow-hidden z-10 transition-shadow duration-500 hover:shadow-xl hover:shadow-black/[0.03] h-full">
+        <div className="self-stretch flex flex-col justify-start items-start gap-6">
+          <div className="self-stretch inline-flex justify-start items-start gap-5">
+            <h3 className="flex-1 text-center justify-center text-zinc-800 text-3xl md:text-4xl font-medium leading-[1.1] md:leading-10 tracking-tight">
+              {title}
+            </h3>
+          </div>
+          <p className="self-stretch text-center md:text-left text-neutral-800 text-lg md:text-xl font-normal leading-6 tracking-tight">
+            {description}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -56,7 +60,7 @@ const Services: React.FC = () => {
   const services: ServiceCardProps[] = [
     {
       title: "Разработка",
-      description: "Создаем цифровые платформы, интеграции и внедряем AI-технологии",
+      description: "Создаем цифровые платформы, интеграции и внедряем AI‑технологии",
       iconColor: "#108a65",
       imageSrc: `${baseUrl}/developing.png`,
       blendMode: 'multiply'
@@ -86,7 +90,7 @@ const Services: React.FC = () => {
 
   return (
     <section id="services" className="py-20 md:py-32 px-6 md:px-10 max-w-[1920px] mx-auto">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-32">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-32">
         {services.map((service, index) => (
           <ServiceCard 
             key={index} 

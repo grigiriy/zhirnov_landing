@@ -79,21 +79,21 @@ const CASE_DATA: CaseItem[] = [
 const CaseCard: React.FC<CaseItem> = ({ title, color, badge, image }) => {
   const baseUrl = "https://cq77457.tmweb.ru/ZHIRNOV/assets/img";
   return (
-    <div className="group cursor-pointer">
+    <div className="flex flex-col w-full">
       <div 
-        className="relative aspect-[16/10] md:aspect-[1.4/1] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden mb-6 transition-transform duration-500 group-hover:scale-[0.98]"
+        className="relative w-full aspect-[591/332] rounded-[32px] overflow-hidden"
         style={{ backgroundColor: color }}
       >
-        {/* Project Image */}
+        {/* Project Image - Responsive and no hover effects */}
         <img 
           src={`${baseUrl}/cases/${image}`} 
           alt={title} 
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+          className="absolute inset-0 w-full h-full object-cover" 
         />
 
         {/* Badge overlay if present */}
         {badge && (
-          <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 w-12 h-12 md:w-16 md:h-16 bg-black rounded-2xl md:rounded-[1.25rem] flex items-center justify-center text-white shadow-xl transition-transform duration-500 group-hover:translate-y-[-4px] z-10">
+          <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 w-12 h-12 md:w-16 md:h-16 bg-black rounded-2xl md:rounded-[1.25rem] flex items-center justify-center text-white shadow-xl z-10">
             {badge === 'telegram' ? (
               <img src={`${baseUrl}/icons/telegram.svg`} alt="Telegram" className="w-6 h-6 md:w-8 md:h-8" />
             ) : (
@@ -102,9 +102,11 @@ const CaseCard: React.FC<CaseItem> = ({ title, color, badge, image }) => {
           </div>
         )}
       </div>
-      <h4 className="text-[20px] md:text-[24px] font-bold tracking-tight text-[#1a1a1a] leading-[1.2] group-hover:text-[#108a65] transition-colors">
+      
+      {/* 8px on mobile (mt-2), 16px on desktop (md:mt-4) */}
+      <div className="mt-2 md:mt-4 self-stretch justify-center text-neutral-800 text-2xl font-normal leading-7 line-clamp-3 tracking-tight">
         {title}
-      </h4>
+      </div>
     </div>
   );
 };
@@ -118,39 +120,45 @@ const Cases: React.FC = () => {
     : CASE_DATA.filter(c => c.category === activeCategory);
 
   return (
-    <section id="cases" className="py-12 md:py-24 px-6 md:px-10 max-w-[1440px] mx-auto overflow-hidden">
-      {/* Section Heading with lines */}
+    <section id="cases" className="py-12 md:py-24 px-6 md:px-10 max-w-[1920px] mx-auto overflow-hidden">
+      {/* Section Heading */}
       <div className="flex items-center gap-6 md:gap-10 mb-12 md:mb-20">
-        <div className="h-[1px] bg-gray-200 flex-1"></div>
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#1a1a1a]">Кейсы</h2>
-        <div className="h-[1px] bg-gray-200 flex-1"></div>
+        <div className="h-[1px] bg-zinc-100 flex-1"></div>
+        <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.05em] text-zinc-800">Кейсы</h2>
+        <div className="h-[1px] bg-zinc-100 flex-1"></div>
       </div>
 
-      {/* Filter Tabs - Centered */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12 md:mb-16">
+      {/* Filter Tabs */}
+      <div className="flex flex-wrap items-center justify-center gap-4 mb-12 md:mb-16">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-6 py-3.5 rounded-full text-sm font-bold tracking-tight transition-all duration-300 ${
+            className={`px-4 pt-3 pb-3.5 rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden transition-all duration-300 ${
               activeCategory === cat 
-                ? 'bg-[#108a65] text-white shadow-lg shadow-[#108a65]/20' 
-                : 'bg-[#f5f5f5] text-[#1a1a1a] hover:bg-gray-200'
+                ? 'bg-emerald-600' 
+                : 'bg-zinc-100'
             }`}
           >
-            {cat}
+            <div className={`justify-center text-lg font-normal leading-6 ${
+              activeCategory === cat ? 'text-white' : 'text-neutral-800'
+            }`}>
+              {cat}
+            </div>
           </button>
         ))}
-        <button className="px-6 py-3.5 rounded-full text-sm font-bold tracking-tight bg-[#f5f5f5] text-[#1a1a1a] hover:bg-gray-200 flex items-center gap-2">
-          Ещё
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-          </svg>
+        <button className="px-4 pt-3 pb-3.5 bg-zinc-100 rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden transition-all">
+          <div className="justify-center text-neutral-800 text-lg font-normal leading-6 flex items-center gap-2">
+            Ещё
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
         </button>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16 md:gap-y-24">
+      {/* Grid: 16px horizontal (gap-x-4), 32px vertical (gap-y-8) on desktop. 24px vertical on mobile (gap-y-6). */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-x-4 md:gap-y-8 max-w-[1214px] mx-auto">
         {filteredCases.map((item) => (
           <CaseCard key={item.id} {...item} />
         ))}

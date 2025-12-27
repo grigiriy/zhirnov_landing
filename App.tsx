@@ -26,7 +26,7 @@ const App: React.FC = () => {
       </main>
       
       <footer className="bg-[#1a1a1a] text-white overflow-hidden pt-12 md:pt-16">
-        <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1920px] mx-auto px-6 md:px-10">
           
           {/* Top Section */}
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 md:mb-16">
@@ -36,17 +36,17 @@ const App: React.FC = () => {
               <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="flex items-center hover:opacity-80 transition-opacity">
                 <img src={`${baseUrl}/icons/zhirnov_logo_w.svg`} alt="ZHIRNOV" className="h-6 md:h-8" />
               </a>
-              <div className="flex gap-6 md:gap-12 text-[17px] md:text-[18px] font-bold">
-                <a href="#services" className="hover:text-gray-400 transition-colors">Услуги</a>
-                <a href="#cases" className="hover:text-gray-400 transition-colors">Кейсы</a>
+              <div className="flex gap-6 md:gap-12 text-[17px] md:text-[18px] font-medium tracking-tight">
+                <a href="#services" className="hover:text-zinc-400 transition-colors">Услуги</a>
+                <a href="#cases" className="hover:text-zinc-400 transition-colors">Кейсы</a>
               </div>
             </div>
 
             {/* Social Links */}
-            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 text-[17px] md:text-[18px] font-bold text-center md:text-right">
-              <a href="https://t.me/zhirnov_studio" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">Телеграм</a>
-              <a href="https://vk.com/zhirnov_studio" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors">Вконтакте</a>
-              <a href="mailto:hello@zhirnov.studio" className="hover:text-gray-400 transition-colors tracking-tight">hello@zhirnov.studio</a>
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 text-[17px] md:text-[18px] font-medium text-center md:text-right tracking-tight">
+              <a href="https://t.me/zhirnov_studio" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-400 transition-colors">Телеграм</a>
+              <a href="https://vk.com/zhirnov_studio" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-400 transition-colors">Вконтакте</a>
+              <a href="mailto:hello@zhirnov.studio" className="hover:text-zinc-400 transition-colors">hello@zhirnov.studio</a>
             </div>
           </div>
 
@@ -68,13 +68,13 @@ const App: React.FC = () => {
             
             {/* Policy Link */}
             <div className="order-2 md:order-1 mt-20 md:mt-0">
-              <a href="#" className="text-[15px] md:text-[18px] font-bold border-b border-white hover:text-gray-400 hover:border-gray-400 transition-all pb-0.5">
+              <a href="#" className="text-[15px] md:text-[18px] font-medium border-b border-white/30 hover:text-zinc-400 hover:border-zinc-400 transition-all pb-0.5 tracking-tight">
                 Политика обработки данных
               </a>
             </div>
 
             {/* Copyright */}
-            <div className="order-3 md:order-2 mt-4 md:mt-0 text-[15px] md:text-[18px] font-bold text-gray-500">
+            <div className="order-3 md:order-2 mt-4 md:mt-0 text-[15px] md:text-[18px] font-medium text-zinc-500 tracking-tight">
               © 2026, ZHIRNOV STUDIO
             </div>
 

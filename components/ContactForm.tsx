@@ -113,7 +113,7 @@ const ContactForm: React.FC = () => {
         {/* Bottom Form Actions */}
         <div className="flex flex-col lg:flex-row gap-12 md:gap-20">
           <div className="flex-1">
-            <label className="block text-[15px] font-medium text-zinc-500 mb-6 font-['Inter'] text-left">Бюджет, ₽</label>
+            <label className="block text-2xl font-medium text-white/50 mb-6 font-['Inter'] text-left leading-8">Бюджет, ₽</label>
             <div className="flex flex-wrap gap-3">
               {budgets.map((b) => (
                 <button
@@ -132,7 +132,7 @@ const ContactForm: React.FC = () => {
           </div>
 
           <div className="flex-1">
-            <label className="block text-[15px] font-medium text-zinc-500 mb-6 font-['Inter'] text-left">Техническое задание</label>
+            <label className="block text-2xl font-medium text-white/50 mb-6 font-['Inter'] text-left leading-8">Техническое задание</label>
             {/* Black Button: 52px height, px-4 py-3.5, auto width on mobile */}
             <button className="h-[52px] px-4 py-3.5 bg-white/10 hover:bg-white/15 rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden transition-all group">
               <span className="justify-center text-white text-lg font-normal font-['Golos_Text'] leading-6">Прикрепить файл</span>
@@ -146,7 +146,7 @@ const ContactForm: React.FC = () => {
            <button className="h-[52px] w-full md:w-auto px-4 py-3.5 bg-white rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden hover:bg-zinc-100 transition-all active:scale-95">
             <span className="justify-center text-neutral-800 text-lg font-normal font-['Golos_Text'] leading-6">Отправить заявку</span>
           </button>
-          <p className="text-[13px] md:text-[15px] font-medium text-zinc-500 text-left leading-tight md:whitespace-nowrap tracking-tight font-['Inter']">
+          <p className="text-[13px] md:text-[15px] font-medium text-white text-left leading-tight md:whitespace-nowrap tracking-tight font-['Inter']">
             Нажимая кнопку «Отправить заявку», вы соглашаетесь с <a href="#" className="text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-all">политикой обработки данных</a>.
           </p>
         </div>

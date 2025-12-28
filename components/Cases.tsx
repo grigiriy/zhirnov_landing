@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 type Category = 'Все кейсы' | 'Брендинг' | 'Сайты' | 'Веб-сервисы' | 'Приложения';
@@ -10,6 +9,10 @@ interface CaseItem {
   color: string;
   badge?: 'telegram' | 'vc';
   image: string;
+}
+
+interface CasesProps {
+  onCaseClick: () => void;
 }
 
 const CASE_DATA: CaseItem[] = [
@@ -83,12 +86,12 @@ const CASE_DATA: CaseItem[] = [
   }
 ];
 
-const CaseCard: React.FC<CaseItem> = ({ title, color, badge, image }) => {
+const CaseCard: React.FC<CaseItem & { onClick: () => void }> = ({ title, color, badge, image, onClick }) => {
   const baseUrl = "https://cq77457.tmweb.ru/ZHIRNOV/assets/img";
   return (
-    <div className="flex flex-col w-full">
+    <button onClick={onClick} className="flex flex-col w-full text-left group">
       <div 
-        className="relative w-full aspect-[591/332] rounded-[32px] overflow-hidden"
+        className="relative w-full aspect-[591/332] rounded-[32px] overflow-hidden transition-transform duration-300 group-hover:scale-105"
         style={{ backgroundColor: color }}
       >
         {/* Project Image - Responsive and no hover effects */}
@@ -114,11 +117,11 @@ const CaseCard: React.FC<CaseItem> = ({ title, color, badge, image }) => {
       <div className="mt-2 md:mt-4 self-stretch justify-center text-neutral-800 text-lg md:text-2xl font-normal leading-6 md:leading-7 line-clamp-3 tracking-[-0.015em]">
         {title}
       </div>
-    </div>
+    </button>
   );
 };
 
-const Cases: React.FC = () => {
+const Cases: React.FC<CasesProps> = ({ onCaseClick }) => {
   const [activeCategory, setActiveCategory] = useState<Category>('Все кейсы');
   const categories: Category[] = ['Все кейсы', 'Брендинг', 'Сайты', 'Веб-сервисы', 'Приложения'];
 
@@ -166,7 +169,7 @@ const Cases: React.FC = () => {
       {/* Grid: 16px horizontal (gap-x-4), 32px vertical (gap-y-8) on desktop. 24px vertical on mobile (gap-y-6). */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-x-4 md:gap-y-8 max-w-[1214px] mx-auto">
         {filteredCases.map((item) => (
-          <CaseCard key={item.id} {...item} />
+          <CaseCard key={item.id} {...item} onClick={onCaseClick} />
         ))}
       </div>
     </section>

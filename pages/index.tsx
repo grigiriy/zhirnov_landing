@@ -1,31 +1,22 @@
 
-import Navbar from '../components/Navbar.tsx';
-import Hero from '../components/Hero.tsx';
-import Marquee from '../components/Marquee.tsx';
-import Services from '../components/Services.tsx';
-import Cases from '../components/Cases.tsx';
-import ContactForm from '../components/ContactForm.tsx';
-import Footer from '../components/Footer.tsx';
+import Hero from '../components/Hero';
+import Marquee from '../components/Marquee';
+import Services from '../components/Services';
+import Cases from '../components/Cases';
+import ContactForm from '../components/ContactForm';
+import { useRouter } from 'next/router';
 
 const HomePage = () => {
-  const baseUrl = "https://cq77457.tmweb.ru/ZHIRNOV/assets/img";
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <Marquee />
-        <Services />
-        <Cases />
-        <ContactForm />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Hero />
+      <Marquee />
+      <Services />
+      <Cases onCaseClick={() => router.push('/case')} />
+      <ContactForm />
+    </>
   );
 };
 

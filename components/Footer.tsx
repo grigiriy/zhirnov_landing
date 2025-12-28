@@ -1,8 +1,18 @@
+import React, { useContext } from 'react';
+import { LanguageContext } from '../context/LanguageContext';
 
-import React from 'react';
+interface FooterProps {
+  onLogoClick: () => void;
+}
 
-const Footer: React.FC = () => {
+const Footer: React.FC<FooterProps> = ({ onLogoClick }) => {
   const baseUrl = "https://cq77457.tmweb.ru/ZHIRNOV/assets/img";
+  const langContext = useContext(LanguageContext);
+
+  if (!langContext) {
+    throw new Error('LanguageContext not found');
+  }
+  const { translations } = langContext;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -16,10 +26,12 @@ const Footer: React.FC = () => {
         <div className="md:hidden flex flex-col pt-8 pb-10 px-6">
           {/* Mobile Top Row */}
           <div className="flex items-center justify-between mb-6">
-            <img src={`${baseUrl}/icons/zhirnov_logo_w.svg`} alt="ZHIRNOV" className="h-6" />
+            <button onClick={onLogoClick}>
+              <img src={`${baseUrl}/icons/zhirnov_logo_w.svg`} alt="ZHIRNOV" className="h-6" />
+            </button>
             <div className="flex gap-4">
-              <a href="#services" className="text-white text-lg font-normal leading-6">Услуги</a>
-              <a href="#cases" className="text-white text-lg font-normal leading-6">Кейсы</a>
+              <a href="/#services" className="text-white text-lg font-normal leading-6">{translations.services}</a>
+              <a href="/#cases" className="text-white text-lg font-normal leading-6">{translations.cases}</a>
             </div>
           </div>
 
@@ -60,15 +72,15 @@ const Footer: React.FC = () => {
           <div className="h-[52px] flex justify-between items-center mb-6">
             {/* Logo (Left) */}
             <div className="flex-1 flex justify-start">
-              <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }}>
+              <button onClick={onLogoClick}>
                 <img src={`${baseUrl}/icons/zhirnov_logo_w.svg`} alt="ZHIRNOV" className="h-6" />
-              </a>
+              </button>
             </div>
 
             {/* Nav (Center) */}
             <div className="flex justify-center gap-6">
-              <a href="#services" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Услуги</a>
-              <a href="#cases" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Кейсы</a>
+              <a href="/#services" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">{translations.services}</a>
+              <a href="/#cases" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">{translations.cases}</a>
             </div>
 
             {/* Socials (Right) */}

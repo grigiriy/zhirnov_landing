@@ -1,7 +1,13 @@
+
 import React, { useState, useContext } from 'react';
 import { LanguageContext } from '../context/LanguageContext';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onLogoClick: () => void;
+  onContactClick: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onLogoClick, onContactClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const baseUrl = "https://cq77457.tmweb.ru/ZHIRNOV/assets/img";
 
@@ -25,15 +31,15 @@ const Navbar: React.FC = () => {
       <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-xl z-50 transition-all duration-300 border-b border-gray-100/30">
         <div className="max-w-[1920px] mx-auto px-6 md:px-10 h-24 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'}); }} className="w-40 flex items-center cursor-pointer">
+          <button onClick={onLogoClick} className="w-40 flex items-center cursor-pointer">
             <img src={`${baseUrl}/icons/zhirnov_logo_b.svg`} alt="ZHIRNOV" className="h-8" />
-          </a>
+          </button>
 
           {/* Desktop Links */}
           <div className="hidden ml-auto mr-36 lg:flex items-center gap-8 text-[15px] font-bold">
-            <a href="#services" className="justify-center text-color-grey-10 text-lg font-normal leading-6">{translations.services}</a>
-            <a href="#cases" className="justify-center text-color-grey-10 text-lg font-normal leading-6">{translations.cases}</a>
-            <a href="#contacts" className="justify-center text-color-grey-10 text-lg font-normal leading-6">{translations.contacts}</a>
+            <a href="/#services" className="justify-center text-color-grey-10 text-lg font-normal leading-6">{translations.services}</a>
+            <a href="/#cases" className="justify-center text-color-grey-10 text-lg font-normal leading-6">{translations.cases}</a>
+            <button onClick={onContactClick} className="justify-center text-color-grey-10 text-lg font-normal leading-6">{translations.contacts}</button>
           </div>
 
           {/* Desktop Actions */}
@@ -42,9 +48,9 @@ const Navbar: React.FC = () => {
                 <img src={`${baseUrl}/icons/en.svg`} alt="Language" className="w-5 h-5" />
                 <span className="justify-center text-neutral-800 text-lg font-normal leading-6">{locale === 'ru' ? 'En' : 'Ru'}</span>
             </button>
-            <a href="#contacts" className="h-11 px-4 py-3.5 bg-emerald-600 rounded-2xl inline-flex justify-center items-center overflow-hidden">
+            <button onClick={onContactClick} className="h-11 px-4 py-3.5 bg-emerald-600 rounded-2xl inline-flex justify-center items-center overflow-hidden">
               <div className="justify-center text-white text-lg font-normal leading-6">{translations.discussProject}</div>
-            </a>
+            </button>
             
             {/* Telegram Button Update */}
             <a 
@@ -83,9 +89,9 @@ const Navbar: React.FC = () => {
         className={`fixed inset-0 bg-white z-[60] transition-transform duration-500 flex flex-col ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div className="flex items-center justify-between px-6 h-20">
-          <a href="#" onClick={(e) => { e.preventDefault(); toggleMenu(); window.scrollTo({top: 0, behavior: 'smooth'}); }} className="flex items-center">
+          <button onClick={() => { toggleMenu(); onLogoClick(); }} className="flex items-center">
              <img src={`${baseUrl}/icons/zhirnov_logo_b.svg`} alt="ZHIRNOV" className="h-6" />
-          </a>
+          </button>
           <button 
             onClick={toggleMenu}
             className="flex items-center justify-center bg-[#f5f5f5] w-14 h-14 rounded-2xl active:scale-90 transition-all"
@@ -97,16 +103,16 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="flex-1 flex flex-col items-center justify-center gap-10 text-[42px] font-bold tracking-tight">
-          <a href="#services" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">{translations.services}</a>
-          <a href="#cases" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">{translations.cases}</a>
-          <a href="#contacts" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">{translations.contacts}</a>
+          <a href="/#services" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">{translations.services}</a>
+          <a href="/#cases" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">{translations.cases}</a>
+          <button onClick={() => { toggleMenu(); onContactClick(); }} className="hover:text-gray-400 transition-colors">{translations.contacts}</button>
         </div>
 
         <div className="px-6 pb-12 flex flex-col gap-4">
           <div className="flex gap-2">
-            <a href="#contacts" onClick={toggleMenu} className="flex-[2.5] bg-[#108a65] text-white py-4.5 rounded-[20px] font-bold text-[18px] active:scale-95 transition-all text-center">
+            <button onClick={() => { toggleMenu(); onContactClick(); }} className="flex-[2.5] bg-[#108a65] text-white py-4.5 rounded-[20px] font-bold text-[18px] active:scale-95 transition-all text-center">
               {translations.discussProject}
-            </a>
+            </button>
             <button onClick={() => { handleLanguageChange(); toggleMenu(); }} className="flex-1 bg-[#f5f5f5] flex items-center justify-center gap-2 rounded-[20px] py-4.5 font-bold text-[18px] active:scale-95 transition-all">
                <img src={`${baseUrl}/icons/en.svg`} alt="Language" className="w-5 h-5" />
               {locale === 'ru' ? 'En' : 'Ru'}

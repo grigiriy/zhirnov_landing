@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const LOGO_DATA = [
@@ -28,6 +27,12 @@ const LogoItem: React.FC<{ name: string; file: string }> = ({ name, file }) => {
 const Marquee: React.FC = () => {
   return (
     <div className="relative w-full overflow-hidden pt-8 md:pb-[100px] pb-[60px]">
+      {/* Left Fade Overlay */}
+      <div className="absolute left-0 top-0 bottom-0 w-20 md:w-60 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+      
+      {/* Right Fade Overlay */}
+      <div className="absolute right-0 top-0 bottom-0 w-20 md:w-60 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+
       <div className="animate-marquee flex items-center">
         <div className="flex items-center">
           {LOGO_DATA.map((logo, i) => (

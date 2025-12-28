@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface ServiceCardProps {
@@ -8,7 +7,7 @@ interface ServiceCardProps {
   imageSrc: string;
 }
 
-const ServiceIcon: React.FC<{ src: string, color: string, blendMode: any }> = ({ src, color, blendMode }) => {
+const ServiceIcon: React.FC<{ src: string, color: string }> = ({ src, color }) => {
   return (
     <div className="relative w-[180px] h-[180px] md:w-[360px] md:h-[360px] flex items-center justify-center pointer-events-none">
       {/* Dynamic Glow Background */}
@@ -17,12 +16,17 @@ const ServiceIcon: React.FC<{ src: string, color: string, blendMode: any }> = ({
         style={{ backgroundColor: color }}
       ></div>
       
-      {/* 3D Asset Image */}
-      <img 
-        src={src} 
-        alt=""
-        className="relative z-10 w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6"
-      />
+      {/* 
+        Simplified Lift Wrapper:
+        Only handles the smooth -10px lift on hover defined in index.html
+      */}
+      <div className="relative z-10 w-full h-full service-lift-wrapper">
+        <img 
+          src={src} 
+          alt=""
+          className="w-full h-full object-contain"
+        />
+      </div>
     </div>
   );
 };
@@ -35,8 +39,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, iconColor
         <ServiceIcon src={imageSrc} color={iconColor} />
       </div>
       
-      {/* Card Wrapper matching the snippet */}
-      <div className="self-stretch px-4 md:px-8 pt-20 md:pt-40 pb-8 bg-zinc-100 rounded-[32px] inline-flex flex-col justify-start items-start gap-1 overflow-hidden z-10 transition-shadow duration-500 hover:shadow-xl hover:shadow-black/[0.03] h-full">
+      {/* Card Wrapper */}
+      <div className="self-stretch px-4 md:px-8 pt-20 md:pt-40 pb-8 bg-zinc-100 rounded-[32px] inline-flex flex-col justify-start items-start gap-1 overflow-hidden z-10 h-full">
         <div className="self-stretch flex flex-col justify-start items-start gap-2 md:gap-6">
           <div className="self-stretch inline-flex justify-start items-start gap-5">
             <h3 className="flex-1 md:text-center justify-center text-zinc-800 text-xl md:text-[40px] font-medium leading-[1.1] md:leading-10 tracking-tight">

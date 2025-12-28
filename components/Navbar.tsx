@@ -1,11 +1,24 @@
-
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { LanguageContext } from '../context/LanguageContext';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const baseUrl = "https://cq77457.tmweb.ru/ZHIRNOV/assets/img";
 
+  const langContext = useContext(LanguageContext);
+
+  if (!langContext) {
+    throw new Error('LanguageContext not found');
+  }
+
+  const { locale, setLocale, translations } = langContext;
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const handleLanguageChange = () => {
+    const newLocale = locale === 'ru' ? 'en' : 'ru';
+    setLocale(newLocale);
+  };
 
   return (
     <>
@@ -18,19 +31,19 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Links */}
           <div className="hidden ml-auto mr-36 lg:flex items-center gap-8 text-[15px] font-bold">
-            <a href="#services" className="justify-center text-color-grey-10 text-lg font-normal leading-6">Услуги</a>
-            <a href="#cases" className="justify-center text-color-grey-10 text-lg font-normal leading-6">Кейсы</a>
-            <a href="#contacts" className="justify-center text-color-grey-10 text-lg font-normal leading-6">Контакты</a>
+            <a href="#services" className="justify-center text-color-grey-10 text-lg font-normal leading-6">{translations.services}</a>
+            <a href="#cases" className="justify-center text-color-grey-10 text-lg font-normal leading-6">{translations.cases}</a>
+            <a href="#contacts" className="justify-center text-color-grey-10 text-lg font-normal leading-6">{translations.contacts}</a>
           </div>
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-2">
-            <a href="#" className="h-11 px-3 py-3.5 bg-zinc-100 rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden">
-                <img src={`${baseUrl}/icons/en.svg`} alt="EN" className="w-5 h-5" />
-                <span className="justify-center text-neutral-800 text-lg font-normal leading-6">En</span>
-            </a>
+            <button onClick={handleLanguageChange} className="h-11 px-3 py-3.5 bg-zinc-100 rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden">
+                <img src={`${baseUrl}/icons/en.svg`} alt="Language" className="w-5 h-5" />
+                <span className="justify-center text-neutral-800 text-lg font-normal leading-6">{locale === 'ru' ? 'En' : 'Ru'}</span>
+            </button>
             <a href="#contacts" className="h-11 px-4 py-3.5 bg-emerald-600 rounded-2xl inline-flex justify-center items-center overflow-hidden">
-              <div className="justify-center text-white text-lg font-normal leading-6">Обсудить проект</div>
+              <div className="justify-center text-white text-lg font-normal leading-6">{translations.discussProject}</div>
             </a>
             
             {/* Telegram Button Update */}
@@ -44,7 +57,7 @@ const Navbar: React.FC = () => {
                   <div className="w-6 h-6 relative overflow-hidden flex items-center justify-center">
                       <img src={`${baseUrl}/icons/telegram.svg`} alt="" className="w-5 h-4" />
                   </div>
-                  <span className="justify-center text-white text-lg font-normal leading-6">Наш канал</span>
+                  <span className="justify-center text-white text-lg font-normal leading-6">{translations.ourChannel}</span>
                     <div className="px-2 py-0.5 bg-white rounded-[10px] flex justify-center items-center gap-1">
                       <div className="justify-center text-zinc-800 text-base font-normal leading-6">1.5к</div>
                   </div>
@@ -84,25 +97,25 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="flex-1 flex flex-col items-center justify-center gap-10 text-[42px] font-bold tracking-tight">
-          <a href="#services" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">Услуги</a>
-          <a href="#cases" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">Кейсы</a>
-          <a href="#contacts" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">Контакты</a>
+          <a href="#services" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">{translations.services}</a>
+          <a href="#cases" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">{translations.cases}</a>
+          <a href="#contacts" onClick={toggleMenu} className="hover:text-gray-400 transition-colors">{translations.contacts}</a>
         </div>
 
         <div className="px-6 pb-12 flex flex-col gap-4">
           <div className="flex gap-2">
             <a href="#contacts" onClick={toggleMenu} className="flex-[2.5] bg-[#108a65] text-white py-4.5 rounded-[20px] font-bold text-[18px] active:scale-95 transition-all text-center">
-              Обсудить проект
+              {translations.discussProject}
             </a>
-            <a href="#" className="flex-1 bg-[#f5f5f5] flex items-center justify-center gap-2 rounded-[20px] py-4.5 font-bold text-[18px] active:scale-95 transition-all">
-               <img src={`${baseUrl}/icons/en.svg`} alt="EN" className="w-5 h-5" />
-              En
-            </a>
+            <button onClick={() => { handleLanguageChange(); toggleMenu(); }} className="flex-1 bg-[#f5f5f5] flex items-center justify-center gap-2 rounded-[20px] py-4.5 font-bold text-[18px] active:scale-95 transition-all">
+               <img src={`${baseUrl}/icons/en.svg`} alt="Language" className="w-5 h-5" />
+              {locale === 'ru' ? 'En' : 'Ru'}
+            </button>
           </div>
           <a href="https://t.me/zhirnovdesign" target="_blank" rel="noopener noreferrer" className="w-full bg-[#2a2a2a] text-white py-5 rounded-[20px] font-bold flex items-center justify-between px-6 active:scale-[0.98] transition-all text-[17px]">
             <div className="flex items-center gap-3">
               <img src={`${baseUrl}/icons/telegram.svg`} alt="Telegram" className="w-6 h-6 invert" />
-              <span>Наш канал</span>
+              <span>{translations.ourChannel}</span>
             </div>
             <span className="bg-white text-black px-3 py-1 rounded-xl text-sm font-black opacity-90">1.5к</span>
           </a>

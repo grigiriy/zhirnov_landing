@@ -1,5 +1,8 @@
-
 import React, { useState, useRef, useEffect } from 'react';
+
+interface ContactFormProps {
+  brief_link?: string;
+}
 
 const FloatingInput: React.FC<{ label: string; type?: string; required?: boolean }> = ({ label, type = "text", required }) => {
   const [focused, setFocused] = useState(false);
@@ -68,7 +71,7 @@ const AutoExpandingTextarea: React.FC<{ label: string; required?: boolean }> = (
   );
 };
 
-const ContactForm: React.FC = () => {
+const ContactForm: React.FC<ContactFormProps> = ({ brief_link }) => {
   const [activeBudget, setActiveBudget] = useState<string>('1-3 млн');
   const baseUrl = "https://cq77457.tmweb.ru/ZHIRNOV/assets/img";
   const budgets = ['до 1 млн', '1-3 млн', '3-7 млн', 'от 7 млн'];
@@ -97,9 +100,9 @@ const ContactForm: React.FC = () => {
             </div>
           </div>
           {/* White Button: 52px height, px-4 py-3.5, fullwidth mobile */}
-          <button className="h-[52px] w-full md:w-auto px-4 py-3.5 bg-white rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden hover:bg-zinc-100 transition-all active:scale-95 group">
+          <a href={brief_link || '#'} target="_blank" rel="noopener noreferrer" className="h-[52px] w-full md:w-auto px-4 py-3.5 bg-white rounded-2xl inline-flex justify-center items-center gap-2 overflow-hidden hover:bg-zinc-100 transition-all active:scale-95 group">
             <span className="justify-center text-neutral-800 text-lg font-normal leading-6">Написать в Telegram</span>
-          </button>
+          </a>
         </div>
 
         {/* Form Grid */}

@@ -1,11 +1,15 @@
+
 import React, { useContext } from 'react';
 import { LanguageContext } from '../context/LanguageContext';
 
 interface FooterProps {
   onLogoClick: () => void;
+  email?: string;
+  tg_link?: string;
+  vk_link?: string;
 }
 
-const Footer: React.FC<FooterProps> = ({ onLogoClick }) => {
+const Footer: React.FC<FooterProps> = ({ onLogoClick, email, tg_link, vk_link }) => {
   const baseUrl = "https://cq77457.tmweb.ru/ZHIRNOV/assets/img";
   const langContext = useContext(LanguageContext);
 
@@ -39,9 +43,9 @@ const Footer: React.FC<FooterProps> = ({ onLogoClick }) => {
 
           {/* Mobile Socials Block */}
           <div className="flex flex-col items-center gap-3 md:gap-6 mb-4 md:mb-8">
-            <a href="https://t.me/zhirnov_studio" target="_blank" className="text-white text-lg font-normal leading-6">Телеграм</a>
-            <a href="https://vk.com/zhirnov_studio" target="_blank" className="text-white text-lg font-normal leading-6">Вконтакте</a>
-            <a href="mailto:hello@zhirnov.studio" className="text-white text-lg font-normal leading-6">hello@zhirnov.studio</a>
+            <a href={tg_link || "https://t.me/zhirnov_studio"} target="_blank" className="text-white text-lg font-normal leading-6">Телеграм</a>
+            <a href={vk_link || "https://vk.com/zhirnov_studio"} target="_blank" className="text-white text-lg font-normal leading-6">Вконтакте</a>
+            <a href={`mailto:${email || 'hello@zhirnov.studio'}`} className="text-white text-lg font-normal leading-6">{email || 'hello@zhirnov.studio'}</a>
           </div>
 
           {/* Mobile Arrow Section with horizontal lines */}
@@ -85,9 +89,9 @@ const Footer: React.FC<FooterProps> = ({ onLogoClick }) => {
 
             {/* Socials (Right) */}
             <div className="flex-1 flex justify-end gap-6">
-              <a href="https://t.me/zhirnov_studio" target="_blank" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Телеграм</a>
-              <a href="https://vk.com/zhirnov_studio" target="_blank" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Вконтакте</a>
-              <a href="mailto:hello@zhirnov.studio" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">hello@zhirnov.studio</a>
+              <a href={tg_link || "https://t.me/zhirnov_studio"} target="_blank" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Телеграм</a>
+              <a href={vk_link || "https://vk.com/zhirnov_studio"} target="_blank" className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">Вконтакте</a>
+              <a href={`mailto:${email || 'hello@zhirnov.studio'}`} className="text-white text-lg font-normal leading-6 hover:opacity-70 transition-opacity">{email || 'hello@zhirnov.studio'}</a>
             </div>
           </div>
 

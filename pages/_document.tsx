@@ -7,7 +7,7 @@ export default function Document() {
       <Head>
         <meta charSet="UTF-8" />
         <title>Zhirnov | IT Products</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -62,6 +62,39 @@ export default function Document() {
         .no-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
+        }
+
+        /* Custom Prose Styles */
+        .prose {
+            --tw-prose-body: #3f3f46;
+            --tw-prose-headings: #18181b;
+            --tw-prose-lead: #52525b;
+            --tw-prose-links: #108a65;
+            --tw-prose-bold: #18181b;
+            --tw-prose-counters: #71717a;
+            --tw-prose-bullets: #d4d4d8;
+            --tw-prose-hr: #e4e4e7;
+            --tw-prose-quotes: #18181b;
+            --tw-prose-quote-borders: #e4e4e7;
+            --tw-prose-captions: #71717a;
+            --tw-prose-code: #18181b;
+            --tw-prose-pre-code: #e4e4e7;
+            --tw-prose-pre-bg: #18181b;
+            --tw-prose-th-borders: #d4d4d8;
+            --tw-prose-td-borders: #e4e4e7;
+        }
+
+        .prose :where(img):not(:where([class~="not-prose"] *)) {
+            border-radius: 40px;
+        }
+
+        .prose :where(pre):not(:where([class~="not-prose"] *)) {
+            border-radius: 40px;
+            padding: 2rem;
+        }
+
+        .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+            font-weight: 500;
         }
         `}</style>
       </Head>

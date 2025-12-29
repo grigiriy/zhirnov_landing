@@ -1,13 +1,13 @@
-
 import React, { useState, useContext } from 'react';
 import { LanguageContext } from '../context/LanguageContext';
 
 interface NavbarProps {
   onLogoClick: () => void;
   onContactClick: () => void;
+  tg_link?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onLogoClick, onContactClick }) => {
+const Navbar: React.FC<NavbarProps> = ({ onLogoClick, onContactClick, tg_link }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const baseUrl = "https://cq77457.tmweb.ru/ZHIRNOV/assets/img";
 
@@ -54,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogoClick, onContactClick }) => {
             
             {/* Telegram Button Update */}
             <a 
-              href="https://t.me/zhirnov_studio" 
+              href={tg_link || "https://t.me/zhirnov_studio"} 
               target="_blank"
               rel="noopener noreferrer"
               className="hidden xl:inline-flex group transition-transform active:scale-95"
@@ -118,7 +118,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogoClick, onContactClick }) => {
               {locale === 'ru' ? 'En' : 'Ru'}
             </button>
           </div>
-          <a href="https://t.me/zhirnovdesign" target="_blank" rel="noopener noreferrer" className="w-full bg-[#2a2a2a] text-white py-5 rounded-[20px] font-bold flex items-center justify-between px-6 active:scale-[0.98] transition-all text-[17px]">
+          <a href={tg_link || "https://t.me/zhirnovdesign"} target="_blank" rel="noopener noreferrer" className="w-full bg-[#2a2a2a] text-white py-5 rounded-[20px] font-bold flex items-center justify-between px-6 active:scale-[0.98] transition-all text-[17px]">
             <div className="flex items-center gap-3">
               <img src={`${baseUrl}/icons/telegram.svg`} alt="Telegram" className="w-6 h-6 invert" />
               <span>{translations.ourChannel}</span>

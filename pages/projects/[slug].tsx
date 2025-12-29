@@ -1,4 +1,5 @@
-import CaseStudy from '../components/CaseStudy';
+
+import CaseStudy from '../../components/CaseStudy';
 import { useRouter } from 'next/router';
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
@@ -6,6 +7,7 @@ import Head from 'next/head';
 // Define the shape of a WordPress Post
 interface WpPost {
   id: number;
+  slug: string;
   title: {
     rendered: string;
   };
@@ -28,31 +30,33 @@ interface RankMathHead {
 }
 
 export const getServerSideProps: GetServerSideProps<{ post: WpPost | null, seo: RankMathHead | null, relatedPosts: WpPost[] }> = async (context) => {
-  const { id } = context.query;
+  const { slug } = context.params || {};
 
-  if (!id) {
+  if (!slug) {
     return { props: { post: null, seo: null, relatedPosts: [] } };
   }
 
   try {
-    const [postRes, relatedPostsRes] = await Promise.all([
-      fetch(`https://cq77457.tmweb.ru/ZHIRNOV/wp-json/wp/v2/posts/${id}?_embed=true&acf_format=standard`),
-      fetch(`https://cq77457.tmweb.ru/ZHIRNOV/wp-json/wp/v2/posts?per_page=2&exclude=${id}&_embed=true&acf_format=standard`)
-    ]);
-
+    const postRes = await fetch(`https://cq77457.tmweb.ru/ZHIRNOV/wp-json/wp/v2/posts?slug=${slug}&_embed=true&acf_format=standard`);
+    
     if (!postRes.ok) {
       throw new Error('Failed to fetch post');
     }
-    const post: WpPost = await postRes.json();
-    const relatedPosts: WpPost[] = relatedPostsRes.ok ? await relatedPostsRes.json() : [];
+    
+    const posts: WpPost[] = await postRes.json();
+    const post = posts.length > 0 ? posts[0] : null;
 
-    let seo = null;
-    if (post) {
-      const seoRes = await fetch(`https://cq77457.tmweb.ru/ZHIRNOV/wp-json/rankmath/v1/getHead?url=${post.link}`);
-      if (seoRes.ok) {
-        seo = await seoRes.json();
-      }
+    if (!post) {
+      return { notFound: true };
     }
+
+    const [relatedPostsRes, seoRes] = await Promise.all([
+      fetch(`https://cq77457.tmweb.ru/ZHIRNOV/wp-json/wp/v2/posts?per_page=2&exclude=${post.id}&_embed=true&acf_format=standard`),
+      fetch(`https://cq77457.tmweb.ru/ZHIRNOV/wp-json/rankmath/v1/getHead?url=${post.link}`)
+    ]);
+
+    const relatedPosts: WpPost[] = relatedPostsRes.ok ? await relatedPostsRes.json() : [];
+    const seo: RankMathHead | null = seoRes.ok ? await seoRes.json() : null;
 
     return { 
       props: { post, seo, relatedPosts },
@@ -63,7 +67,7 @@ export const getServerSideProps: GetServerSideProps<{ post: WpPost | null, seo: 
   }
 };
 
-const CasePage = ({ post, seo, relatedPosts }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const ProjectPage = ({ post, seo, relatedPosts }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
 
   const getTitle = (head: string) => {
@@ -104,4 +108,4 @@ const CasePage = ({ post, seo, relatedPosts }: InferGetServerSidePropsType<typeo
   );
 };
 
-export default CasePage;
+export default ProjectPage;

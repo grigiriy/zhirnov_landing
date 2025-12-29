@@ -1,3 +1,4 @@
+
 import CaseStudy from '../components/CaseStudy';
 import { useRouter } from 'next/router';
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
@@ -6,6 +7,7 @@ import Head from 'next/head';
 // Define the shape of a WordPress Post
 interface WpPost {
   id: number;
+  slug: string;
   title: {
     rendered: string;
   };

@@ -152,7 +152,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ brief_link }) => {
             <span className="justify-center text-neutral-800 text-lg font-normal font-['Golos_Text'] leading-6">Отправить заявку</span>
           </button>
           <p className="text-[18px] font-medium text-white text-left leading-tight md:whitespace-nowrap tracking-tight font-['Inter']">
-            Нажимая кнопку «Отправить заявку», вы соглашаетесь с <a href="#" className="text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-all">политикой обработки данных</a>.
+            Нажимая на кнопку, вы даете согласие на <a target="_blank" href="https://cq77457.tmweb.ru/ZHIRNOV/privacy.pdf" className="text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-all">обработку персональных данных</a> и соглашаетесь с <a target="_blank" href="https://cq77457.tmweb.ru/ZHIRNOV/privacy.pdf" className="text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-all">политикой конфиденциальности</a>.
           </p>
         </div>
       </div>

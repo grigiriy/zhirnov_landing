@@ -64,7 +64,7 @@ const Footer: React.FC<FooterProps> = ({ onLogoClick, email, tg_link, vk_link })
 
           {/* Mobile Bottom Links */}
           <div className="flex flex-col items-center gap-4">
-            <a href="#" className="text-white text-lg font-normal underline leading-6">Политика обработки данных</a>
+            <a target="_blank" href="https://cq77457.tmweb.ru/ZHIRNOV/privacy.pdf" className="text-white text-lg font-normal underline leading-6">Политика обработки данных</a>
             <div className="text-white/40 text-lg font-normal leading-6">© 2026, ZHIRNOV STUDIO</div>
           </div>
         </div>
